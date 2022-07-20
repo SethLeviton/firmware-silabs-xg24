@@ -189,6 +189,11 @@ void ei_stop_impulse(void)
         dev->set_state(eiStateFinished);
         /* reset samples buffer */
         samples_wr_index = 0;
+        if(ei_microphone_inference_end() == false)
+        {
+            ei_printf("ERR: Failed to stop microphone inference\n");
+            return;
+        }
     }
 }
 
